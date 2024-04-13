@@ -25,4 +25,4 @@ Linux: https://docs.python-guide.org/starting/install3/linux/
 The input file should contain a list of accounts in the format `email|password`, with each account on a new line.
 
 # Disclaimer
-DWacker is a Python script for mass checking accounts at DataWagon.com. Please note that this script is provided for educational purposes only. The use of this script for illegal activities is strictly prohibited. The creator of this script shall not be held responsible for any misuse or unlawful actions taken by individuals who use this script."
+DWacker is a Python script for mass checking accounts at DataWagon.com. Please note that this script is provided for educational purposes only. The use of this script for illegal activities is strictly prohibited. The creator of this script shall not be held responsible for any misuse or unlawful actions taken by individuals who use this script.
